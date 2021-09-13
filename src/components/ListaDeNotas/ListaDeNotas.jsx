@@ -12,6 +12,9 @@ class ListaDeNotas extends Component {
                             <CardNota
                                 title={note.title}
                                 note={note.note}
+                                category={note.category}
+                                index={index}
+                                cleanNote={this.props.cleanNote}
                             />
                         </li>
                     )

@@ -16,6 +16,10 @@
     align-items: center;
 }
 
+.card-nota_delete {
+    cursor: pointer;
+}
+
 .card-nota_texto {
     margin-top: 8px;
     font-size: 1em;
