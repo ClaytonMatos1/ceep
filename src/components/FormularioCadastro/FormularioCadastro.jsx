@@ -8,6 +8,22 @@ class FormularioCadastro extends Component {
         this.title = '';
         this.note = '';
         this.category = 'Sem Categoria';
+        this.state = {
+            categories: []
+        };
+        this.referenceModifyCategoriesByForm = this._modifyCategoriesByForm.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.categories.register(this.referenceModifyCategoriesByForm);
+    }
+
+    componentWillUnmount() {
+        this.props.categories.unregister(this.referenceModifyCategoriesByForm);
+    }
+
+    _modifyCategoriesByForm(categories) {
+        this.setState({...this.state, categories});
     }
 
     _createCard(ev) {
@@ -40,7 +56,7 @@ class FormularioCadastro extends Component {
                     onChange={this._handleChangeCategory.bind(this)}
                 >
                     <option>Sem Categoria</option>
-                    {this.props.categories.map((category, index) => {
+                    {this.state.categories.map((category, index) => {
                         return <option key={index}>{category}</option>
                     })}
                 </select>
