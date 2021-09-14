@@ -1,0 +1,16 @@
+.buscar-notas_section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+.buscar-notas_section > label {
+    margin-right: 8px;
+}
+
+.buscar-notas_select {
+    border: none;
+    background-color: var(--fundo-detalhes);
+    margin-right: 8px;
+}

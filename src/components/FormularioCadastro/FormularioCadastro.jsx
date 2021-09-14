@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, createRef } from "react";
 import './style.css';
 
 class FormularioCadastro extends Component {
@@ -12,6 +12,8 @@ class FormularioCadastro extends Component {
             categories: []
         };
         this.referenceModifyCategoriesByForm = this._modifyCategoriesByForm.bind(this);
+        this.refTitle = createRef();
+        this.refNote = createRef();
     }
 
     componentDidMount() {
@@ -30,6 +32,12 @@ class FormularioCadastro extends Component {
         ev.preventDefault();
         ev.stopPropagation();
         this.props.createNote(this.title, this.note, this.category);
+        this._cleanForm();
+    }
+
+    _cleanForm() {
+        this.refTitle.current.value = '';
+        this.refNote.current.value = '';
     }
 
     _handleChangeCategory(ev) {
@@ -62,11 +70,13 @@ class FormularioCadastro extends Component {
                 </select>
                 <input
                     type="text"
+                    ref={this.refTitle}
                     placeholder="Título"
                     className="form-cadastro_input"
                     onChange={this._handleChangeTitle.bind(this)}
                 />
                 <textarea
+                    ref={this.refNote}
                     rows={15}
                     placeholder="Escreva sua nota..."
                     className="form-cadastro_input"

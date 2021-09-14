@@ -1,21 +1,15 @@
-export default class Categorias {
+import Base from "./Base";
+
+export default class Categorias extends Base {
 
     constructor() {
+        super();
         this.categories = [];
-        this._registered = [];
     }
 
     addCategory(newCategory) {
         this.categories.push(newCategory);
         this.notify();
-    }
-
-    register(callback) {
-        this._registered.push(callback);
-    }
-
-    unregister(callback) {
-        this._registered = this._registered.filter(call => call !== callback);
     }
 
     notify() {

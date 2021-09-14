@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, createRef } from 'react';
 import './style.css';
 
 class ListaDeCategorias extends Component {
@@ -9,6 +9,7 @@ class ListaDeCategorias extends Component {
             categories: []
         };
         this.referenceModifyCategoriesByList = this._modifyCategoriesByList.bind(this);
+        this.refCategory = createRef();
     }
 
     componentDidMount() {
@@ -26,7 +27,12 @@ class ListaDeCategorias extends Component {
     _handleEventInput(ev) {
         if (ev.key === 'Enter' && ev.target.value.length > 0) {
             this.props.addCategory(ev.target.value);
+            this._cleanInput();
         }
+    }
+
+    _cleanInput() {
+        this.refCategory.current.value = '';
     }
 
     render() {
@@ -40,6 +46,7 @@ class ListaDeCategorias extends Component {
                 <input
                     type="text"
                     className="lista-categorias_input"
+                    ref={this.refCategory}
                     placeholder="Adicionar Categoria"
                     onKeyUp={this._handleEventInput.bind(this)}
                 />

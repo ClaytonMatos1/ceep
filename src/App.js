@@ -8,6 +8,7 @@ import Categories from './data/Categorias';
 import FormularioCadastro from './components/FormularioCadastro';
 import ListaDeNotas from './components/ListaDeNotas';
 import ListaDeCategorias from './components/ListaDeCategorias';
+import BuscarNotas from './components/BuscarNotas';
 
 class App extends Component {
 
@@ -25,6 +26,9 @@ class App extends Component {
                     createNote={this.notes.createNote.bind(this.notes)}
                 />
                 <main className="conteudo-principal">
+                    <BuscarNotas
+                        notes={this.notes}
+                    />
                     <ListaDeCategorias
                         categories={this.categories}
                         addCategory={this.categories.addCategory.bind(this.categories)}
